@@ -58,3 +58,14 @@ terminal输入**npm install webpack webpack-cli -g**
 **npm run dev**
 
 项目成功启动
+
+# demo项目使用说明
+该项目源码地址https://github.com/antoine92190/vue-advanced-chat
+
+该项目是一个在线聊天室的vue组件化工具，可以找到自己想要的功能（语音，发送消息，发送图片等等），并将代码直接粘贴到demo项目中，即可看到效果，具体的教程参考视频https://www.bilibili.com/video/BV1U3411r7nd?spm_id_from=333.337.search-card.all.click&vd_source=5eee84cb4f09a3c794199bfbfed84eed
+
+demo项目的启动需要
+
+**npm install**
+
+**npm run dev**
