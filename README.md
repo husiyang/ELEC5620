@@ -47,3 +47,12 @@ terminal中输入**npm install vue-cli -g**
 terminal输入**npm install webpack webpack-cli -g** 
 
 ### 安装vscode
+
+### 启动项目
+
+在vscode中进入到项目中，打开terminal，依次输入
+
+**npm install**
+**npm run dev**
+
+项目成功启动
