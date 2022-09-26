@@ -4,12 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>Springcloud-chatroom</artifactId>
-        <groupId>com.example</groupId>
+        <groupId>com.example.springcloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example.common</groupId>
     <artifactId>service-common</artifactId>
 
     <properties>
@@ -58,6 +57,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.example.springcloud</groupId>
+            <artifactId>service-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.alibaba.cloud</groupId>-->
