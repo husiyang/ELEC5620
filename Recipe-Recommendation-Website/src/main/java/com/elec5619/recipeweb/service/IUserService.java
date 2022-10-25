@@ -13,7 +13,7 @@ public interface IUserService extends IService<User> {
      * @param user user entity
      * @return
      */
-    boolean reg(User user);
+    User reg(User user);
 
 
     /**

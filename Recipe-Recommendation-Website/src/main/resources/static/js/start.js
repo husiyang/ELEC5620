@@ -8,5 +8,5 @@ function register(){
   }
 
   function avatar(){
-    location.replace("http://localhost:3000/avatar");
+    location.replace("/avatar");
   }

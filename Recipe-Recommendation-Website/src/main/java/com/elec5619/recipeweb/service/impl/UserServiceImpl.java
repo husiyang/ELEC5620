@@ -22,27 +22,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private UserMapper userMapper;
 
     @Override
-    public boolean reg(User user) {
+    public User reg(User user) {
 
         if (user.getUsername() == null || user.getPassword() == null) {
-            return false;
+            return null;
         }
 
         User result = userMapper.findByUsername(user.getUsername());
 
         if (result != null){
-            return false;
+            return null;
         }
 
-        if(user.getStudentid().length() != 0){
+        if(user.getStudentid().length() != 0) {
             user.setRole(0);
+        } else {
+            user.setRole(1);
         }
 
         Integer rows = userMapper.insert(user);
         if (rows != 1) {
-            return false;
+            return null;
         }
-        return true;
+
+        return userMapper.findByUsername(user.getUsername());
     }
 
     @Override

@@ -23,20 +23,20 @@ $(document).ready(function(){
           dataType:"json",
           success:function(data){
               console.log(data);
-              if(data.msg == "success"){ //返回成功信息，转到主界面或登陆界面
+              if(data.state === 200){ //返回成功信息，转到主界面或登陆界面
                   alert("Login Success");
                   var loginform = document.getElementById('loginform');
                   username = loginform.elements[0].value;
 
                 //从数据库中得到用户id, 身份，avatar（或许需要）
-                  userid = data.id;
+                  userid = data.uid;
                   role = data.role;
                   avatar = data.avatar;
 
-                  if(role == "student"){
+                  if(role == 0){
                       window.location.href = "/student";
                     // location.replace("http://localhost:8081/student"); //redirect to student main page
-                  }else if(role == "visitor"){
+                  }else if(role == 1){
                       window.location.href = "/visitor";
                     // location.replace("http://localhost:8081/visitor"); //redirect to vistor main page
                   }else{
@@ -77,9 +77,10 @@ $(document).ready(function(){
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回成功信息，转到主界面或登陆界面
+            if(data.state === 200){ //返回成功信息，转到主界面或登陆界面
                 alert("Register Success");
-                if(studentid != ""){
+                console.log(data.studentid);
+                if(data.studentid !== ""){
                     window.location.href = "/avatar";
                     // location.replace("http://localhost:8081/avatar"); //redirect to avatar
                 }else{
@@ -132,7 +133,7 @@ function refresh(){
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回好友json
+            if(data.message == "success"){ //返回好友json
                 for(var i = 0; i < data.contact_student_id.length; i++){
                     var contact_student_id = data.contact_student_id.get(i); //需要确认！！！
                     var contact_avatar = data.contact_avatar.get(i);
@@ -173,7 +174,7 @@ $(document).ready(function(){
           dataType:"json",
           success:function(data){
               console.log(data);
-              if(data.msg == "success"){ //返回成功信息
+              if(data.message == "success"){ //返回成功信息
                   alert("Add New Friend Success");
               }else{
                   alert("Something went wrong, please try again.");
@@ -195,7 +196,7 @@ function getFriend(){
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回好友json
+            if(data.message == "success"){ //返回好友json
                 for(var i = 0; i < data.contact_student_id.length; i++){
                     var contact_student_id = data.contact_student_id.get(i); //需要确认！！！
 
@@ -233,7 +234,7 @@ $(document).ready(function(){
           dataType:"json",
           success:function(data){
               console.log(data);
-              if(data.msg == "success"){ //返回成功信息
+              if(data.message == "success"){ //返回成功信息
                   alert("Create New Room Success");
               }else{
                   alert("Something went wrong, please try again.");
@@ -252,7 +253,7 @@ $(document).ready(function(){
           dataType:"json",
           success:function(data){
               console.log(data);
-              if(data.msg == "success"){ //返回成功信息,显示生日
+              if(data.message == "success"){ //返回成功信息,显示生日
                   var birthday = data.birthday;
                   var input =  document.getElementById("birthday");
                   input.value = birthday;
@@ -277,7 +278,7 @@ $(document).ready(function(){
           dataType:"json",
           success:function(data){
               console.log(data);
-              if(data.msg == "success"){ //返回成功信息
+              if(data.message == "success"){ //返回成功信息
                   alert("Edit Success");
               }else{
                   alert("Something went wrong, please try again.");

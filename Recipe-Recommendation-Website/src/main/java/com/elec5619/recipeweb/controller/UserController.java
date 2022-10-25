@@ -31,9 +31,10 @@ public class UserController extends BaseController{
      * */
     @RequestMapping("/reg")
     @ResponseBody
-    public JsonResult<Void> reg(User user) {
-        if(userService.reg(user)){
-            return new JsonResult<>(CODE_OK,"success");
+    public JsonResult<User> reg(User user) {
+        User result = userService.reg(user);
+        if(result != null){
+            return new JsonResult<User>(CODE_OK,"success",result);
         }
         return new JsonResult<>(CODE_FAIL);
 
@@ -57,7 +58,7 @@ public class UserController extends BaseController{
 
             System.out.println(getUidFromSession(session));
             System.out.println(getUsernameFromSession(session));
-            return new JsonResult<User>(CODE_OK, result);
+            return new JsonResult<User>(CODE_OK, "success", result);
         }
         return new JsonResult<User>(CODE_FAIL);
     }
