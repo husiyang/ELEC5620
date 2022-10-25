@@ -1,0 +1,31 @@
+body{
+    background-image: url('/images/background1.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+  }
+  h2{
+    color: white;
+    text-align: center;
+  }
+  img{
+    height: 150px;
+    width: 150px;
+  }
+  .form-group{
+    text-align: center;
+    color: white;
+    padding: 14px 40px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  #preview{
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    width: 300px;
+  }
+  
