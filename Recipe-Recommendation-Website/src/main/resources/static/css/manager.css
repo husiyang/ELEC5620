@@ -17,6 +17,10 @@ p{
     color: white;
 }
 
+.studentid{
+    color: white;
+}
+
 .addfriend{
     display: none;
     position: fixed;
@@ -150,7 +154,40 @@ p{
     padding-top: 20px;
   }
 
-  .sendImages {
+  .view{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    margin-left: 160px;
+}
+
+.viewRecords{
+    max-width: 300px;
+    padding: 10px;
+    background-color: black;
+}
+
+
+.mute{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    margin-left: 160px;
+}
+
+.muteUsers{
+    max-width: 300px;
+    padding: 10px;
+    background-color: black;
+}
+
+.sendImages {
 	width: 12rem;
 	margin-left: 14px;
 }

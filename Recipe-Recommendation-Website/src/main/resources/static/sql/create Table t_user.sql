@@ -9,7 +9,7 @@ create table t_user (
                         `studentid` Char(32) comment '学生id',
                         `birth` Varchar(20) comment '生日',
                         `age` Varchar(20) comment '年龄',
-                        `avatar` Varchar(50) comment '头像',
+                        `avatar` Blob comment '头像',
                         `role` Int comment '用户身份 0-学生 1-访客 2-管理员',
 
                         primary key (uid)

@@ -32,7 +32,8 @@ public class User implements Serializable{
 
     private String age;
 
-    private String avatar;
+
+    private byte[] avatar;
 
     @NotNull
     private Integer role;

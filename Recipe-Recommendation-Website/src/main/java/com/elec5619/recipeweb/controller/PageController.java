@@ -46,6 +46,22 @@ public class PageController extends BaseController{
         return "student";
     }
 
+    /**
+     * Get Manager Page
+     */
+    @RequestMapping("/manager")
+    public String getManagerPage() {
+        return "manager";
+    }
+
+    /**
+     * Get Visitor Page
+     */
+    @RequestMapping("/visitor")
+    public String getVisitorPage() {
+        return "visitor";
+    }
+
 //    /**
 //     * Get Index Page
 //     */

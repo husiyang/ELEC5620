@@ -1,7 +1,7 @@
 body{
-    background-image: url('/images/background1.png');
+    background-image: url(../images/background1.png);
     background-repeat: no-repeat;
-    background-attachment: fixed; 
+    background-attachment: fixed;
     background-size: 100% 100%;
   }
   h1{
@@ -22,13 +22,13 @@ body{
 
   .button1{
     padding: 14px 40px;
-    width: 300px;   
-    min-height: 20px;      
-    background-color: #4a77d4;   
-    border: 1px solid #3762bc;   
-    color: #fff;      
-    font-size: 15px;   
-    line-height: normal;   
-    border-radius: 5px;   
-    margin: 0;   
+    width: 300px;
+    min-height: 20px;
+    background-color: #4a77d4;
+    border: 1px solid #3762bc;
+    color: #fff;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
   }
