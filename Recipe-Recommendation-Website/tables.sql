@@ -7,7 +7,7 @@ CREATE TABLE t_user (
     `studentid` CHAR(32),
     `birth` VARCHAR(20),
     `age` VARCHAR(20),
-    `avatar` BLOB,
+    `avatar` VARCHAR(150),
     `role` INT,
     PRIMARY KEY (uid)
 ) CHARSET = UTF8;

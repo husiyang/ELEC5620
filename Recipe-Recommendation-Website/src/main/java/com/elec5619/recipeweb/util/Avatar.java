@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -88,9 +89,25 @@ public class Avatar {
         driver.quit();
     }
 
-    public String getFile() throws InterruptedException{
-        withCookie("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\AnnexImage\\", "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\images\\667833bb3dba9fe21ca9c28e43ef29b.jpg");
+    private void remove(File file) {
+        File[] files = file.listFiles();//将file子目录及子文件放进文件数组
+        if (files != null) {//如果包含文件进行删除操作
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isFile()) {//删除子文件
+                    files[i].delete();
+                } else if (files[i].isDirectory()) {//通过递归方法删除子目录的文件
+                    remove(files[i]);
+                }
+                files[i].delete();//删除子目录
+            }
+        }
+    }
+
+    public String getFile(String url) throws InterruptedException{
         String path = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\AnnexImage\\";
+        File baseFile = new File(path);
+        remove(baseFile);
+        withCookie("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\AnnexImage\\", url);
         try (Stream<Path> paths = Files.walk(Paths.get(path))){
             List<Path> fileNames = paths
                     .filter(Files::isRegularFile)

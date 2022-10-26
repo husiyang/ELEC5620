@@ -69,18 +69,18 @@ public class UserController extends BaseController {
         return new JsonResult<User>(CODE_FAIL);
     }
 
-//    @RequestMapping("/uploadAvatar")
-//    @ResponseBody
-//    public JsonResult<MultipartFile> uploadAvatar(@RequestPart("file") MultipartFile[] file) throws IOException {
-//        System.out.println(file.length);
-//        MultipartFile resultFile = file[0];
-//        resultFile.transferTo(new File("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\images\\" + resultFile.getOriginalFilename()));
-//        String url = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\images\\" + resultFile.getOriginalFilename();
-//        String imageUrl = userService.convert(url);
-//        String narrowImageUrl = userService.press(imageUrl);
-//        userService.saveImage(narrowImageUrl);
-//        return new JsonResult<MultipartFile>(CODE_OK,"success");
-//    }
+    @RequestMapping("/uploadAvatar")
+    @ResponseBody
+    public JsonResult<String> uploadAvatar(@RequestPart("file") MultipartFile[] file, HttpSession session) throws IOException, InterruptedException {
+        int uid = getUidFromSession(session);
+        MultipartFile resultFile = file[0];
+        resultFile.transferTo(new File("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\images\\" + resultFile.getOriginalFilename()));
+        String url = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\images\\" + resultFile.getOriginalFilename();
+        String imageUrl = userService.convert(url);
+        String narrowImageUrl = userService.press(imageUrl);
+        userService.saveImage(narrowImageUrl, uid);
+        return new JsonResult<String>(CODE_OK,"success", imageUrl);
+    }
 
 }
 

@@ -580,6 +580,7 @@ function uploadAvatar(){
                 console.log(data);
                 if(data.state === 200){
                     alert("File Sent Success");
+                    window.location.href = "/student";
                 }else{
                     alert("Something went wrong, please try again.");
                 }
