@@ -4,13 +4,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elec5619.recipeweb.bean.User;
 import com.elec5619.recipeweb.mapper.UserMapper;
 import com.elec5619.recipeweb.service.IUserService;
-//import com.elec5619.recipeweb.service.ex.*;
+import com.elec5619.recipeweb.util.Avatar;
+import com.elec5619.recipeweb.util.ImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-
-import java.util.Date;
-import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
 
 
 /** userService Implementation */
@@ -66,5 +65,28 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
 
         return result;
+    }
+
+    @Override
+    public String convert(String url) throws InterruptedException{
+        Avatar avatar = new Avatar();
+        return avatar.getFile(url);
+    }
+
+    @Override
+    public String press(String url) throws IOException {
+        File file = new File(url);
+        String fileName = file.getName();
+        String output = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\webapp\\WEB-INF\\jsp\\ThumbImage\\" + fileName;
+        ImageUtil.imgThumb(url,output,150,150);
+        return output;
+    }
+
+    @Override
+    public void saveImage(String url, int uid) {
+        User user = new User();
+        user.setUid(uid);
+        user.setAvatar(url);
+        userMapper.updateById(user);
     }
 }

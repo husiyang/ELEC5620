@@ -6,7 +6,3 @@ function register(){
     window.location.href = "/login";
     // location.replace("http://localhost:8081/login");
   }
-
-  function avatar(){
-    location.replace("/avatar");
-  }

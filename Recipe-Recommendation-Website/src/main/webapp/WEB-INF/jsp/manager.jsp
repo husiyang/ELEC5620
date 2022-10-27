@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/manager.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
@@ -14,11 +14,11 @@
     <!--side bar-->
     <div class="side">
         <img src="images/logo.png"/>
-        <a href="#Add Friend" onclick="showAddfriend()">Add Friend</a>
+        <a href="#View records" onclick="showViewRecords()">View records</a>
         <p></p>
         <a href="#Create New Room" onclick="showCreate()">Create New Room</a>
         <p></p>
-        <a href="#Edit Information" onclick="showedit()">Edit Info</a>
+        <a href="#Mute users" onclick="showMuteUsers()">Mute users</a>
 
         <p>Your Friend</p>
         <button class="refresh" id="refresh" onclick="refresh()">Refresh</button>
@@ -30,7 +30,7 @@
         <p>Your Chat Group</p>
         <button class="refresh" id="refresh" onclick="refreshchat()">Refresh</button>
         <ul id="chatlist">
-            <li class="chat" onclick="showChat(this)">Testing Chat!!!</li>
+            <li class="chat"  onclick="showChat(this)">Testing Chat!!!</li>
         </ul>
     </div>
 
@@ -47,23 +47,9 @@
             <ul class="groupfriendlist" id="groupfriendlist"></ul>
         </section>
         <button type="button" class="button" onclick="send()">Send</button>
-        <button type="button" class="button1" onclick="closeChat()">Close</button>
+        <button type="button " class="button1" onclick="closeChat()">Close</button>
     </div>
 
-    <!---add friend form-->
-    <div class="addfriend" id="addfriend">
-        <form action="" id="addfriendform" class="addfriendform">
-            <h1>Add New Friend</h1>
-            <label for="studentid"><b>Student ID</b></label>
-                <input type="text" placeholder="Enter student ID" name="student_id" required>
-
-                <div>
-                    <input type="submit" class="button" value="Submit"/>
-
-                    <button type="button" class="button1" onclick="closeAddfriend()">Close</button>
-                </div>
-        </form>
-    </div>
 
     <!---create new room form-->
     <div class="newroom" id="newroom">
@@ -78,23 +64,36 @@
             </div>
             <p></p>
             <div>
-                <input type="submit"  class="button" value="Submit"/>
+                <input type="submit" class="button" value="Submit"/>
 
                 <button type="button" class="button1" onclick="closeCreate()">Close</button>
             </div>
         </form>
     </div>
 
-    <!---edit form-->
-    <div class="edit" id="edit">
-        <form action="" id="editform" class="editform">
-            <h1>Edit Your Information</h1>
-            <label for="birthday"><b>Birthday</b></label>
-            <input id="birthday" type="text" placeholder="dd/mm/yy" name="birthday" required>
-            <div>
-               <input type="submit" class="button"  value="Submit"/>
-               <button type="button" class="button1"onclick="closeEdit()">Close</button>
-            </div>
+    <!---View records-->
+    <div class="view" id="view">
+        <form action="" id="viewRecords" class="viewRecords">
+            <h1>View records</h1>
+            <label class="studentid" for="contact_uid"><b>Student ID</b></label>
+            <input id="contact_uid" type="text" placeholder="Input Student ID" name="contact_uid" required>
+            <button type="button" class="button" onclick="submitView()">Submit</button>
+            <button type="button" class="button1" onclick="closeView()">Close</button>
+            <section class="displayarea" id="displayarea"></section>
+
         </form>
     </div>
+
+<!---Mute users-->
+<div class="mute" id="mute">
+    <form action="" id="muteUsers" class="muteUsers">
+        <h1>Mute users</h1>
+        <label class="studentid" for="studentid"><b>Student ID</b></label>
+        <input id="studentid" type="text" placeholder="Input Student ID" name="contact_uid" required>
+        <div>
+           <button type="button" class="button" onclick="Mute()">Mute</button>
+           <button type="button" class="button1" onclick="closeMute()">Close</button>
+        </div>
+    </form>
+</div>
 </body>

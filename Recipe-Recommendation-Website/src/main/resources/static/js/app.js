@@ -6,23 +6,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static('images'));
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/start.html");
+  res.sendFile(__dirname + "/start.jsp");
 });
 
 app.get("/register", function (req, res) {
-  res.sendFile(__dirname + "/register.html");
+  res.sendFile(__dirname + "/register.jsp");
 });
 
 app.get("/login", function (req, res) {
-  res.sendFile(__dirname + "/login.html");
+  res.sendFile(__dirname + "/login.jsp");
 });
 
 app.get("/avatar", function (req, res) {
-  res.sendFile(__dirname + "/avatar.html");
+  res.sendFile(__dirname + "/avatar.jsp");
 });
 
 app.get("/student", function (req, res) {
-  res.sendFile(__dirname + "/student.html");
+  res.sendFile(__dirname + "/student.jsp");
 });
 
 app.listen(3000, function () {
