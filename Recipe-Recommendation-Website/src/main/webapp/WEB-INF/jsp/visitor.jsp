@@ -13,6 +13,7 @@
   <body>
     <!--side bar-->
     <div class="side">
+      <img src="images/logo.png"/>
         <p>Your Chat Group</p>
         <button class="refresh" id="refresh" onclick="refreshchat()">Refresh</button>
         <ul id="chatlist">
@@ -28,8 +29,8 @@
       <form method="post" enctype="multipart/form-data" id="imageForm">
         <input type="file" id="selectimage" accept="image/*" onchange="sendImg(this)" >
       </form>
-      <button type="button" onclick="send()">Send</button>
-      <button type="button" onclick="closeChat()">Close</button>
+      <button type="button"  onclick="send()">Send</button>
+      <button type="button"  onclick="closeChat()">Close</button>
   </div>
 
 </body>

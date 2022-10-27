@@ -1,5 +1,5 @@
 body{
-    background-image: url(../images/background2.png);
+    background-image: url(../images/background1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -17,6 +17,13 @@ p{
     color: white;
 }
 
+img{
+
+    height: 150px;
+    width: 150px;
+
+}
+
 .addfriend{
     display: none;
     position: fixed;
@@ -28,9 +35,19 @@ p{
 }
 
 .addfriendform{
-    max-width: 300px;
-    padding: 10px;
-    background-color: black;
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: fixed;
+    width: 81%;
+    height: 100%;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    top: 100px;
+    margin: auto;
+
 }
 
 .addfriend h1{
@@ -52,9 +69,18 @@ p{
 }
 
 .newroomform{
-    max-width: 300px;
-    padding: 10px;
-    background-color: black;
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: fixed;
+    width: 81%;
+    height: 100%;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    top: 100px;
+    margin: auto;
 }
 
 .newroom h1{
@@ -76,9 +102,18 @@ p{
 }
 
 .editform{
-    max-width: 300px;
-    padding: 10px;
-    background-color: black;
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: fixed;
+    width: 81%;
+    height: 100%;
+    left: 100px;
+    right: 100px;
+    bottom: 100px;
+    top: 100px;
+    margin: auto;
 }
 
 .edit h1{
@@ -160,3 +195,35 @@ p{
 	height: 2.2rem;
 	margin-left: 14px;
 }
+
+.button{
+    position: absolute ;
+    top: 91%;
+    padding: 12px 20px;
+    width: 150px;
+    min-height: 20px;
+    background-color: #a10bc7;
+    border: 1px solid #3762bc;
+    color: #fff;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.button1{
+    position: absolute ;
+    top: 91%;
+    right: 10%;
+    padding: 12px 20px;
+    width: 150px;
+    min-height: 20px;
+    background-color: #a10bc7;
+    border: 1px solid #3762bc;
+    color: #fff;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
+}
+

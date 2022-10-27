@@ -104,10 +104,10 @@ public class Avatar {
     }
 
     public String getFile(String url) throws InterruptedException{
-        String path = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\AnnexImage\\";
+        String path = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\webapp\\WEB-INF\\jsp\\AnnexImage\\";
         File baseFile = new File(path);
         remove(baseFile);
-        withCookie("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\AnnexImage\\", url);
+        withCookie("D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\webapp\\WEB-INF\\jsp\\AnnexImage\\", url);
         try (Stream<Path> paths = Files.walk(Paths.get(path))){
             List<Path> fileNames = paths
                     .filter(Files::isRegularFile)

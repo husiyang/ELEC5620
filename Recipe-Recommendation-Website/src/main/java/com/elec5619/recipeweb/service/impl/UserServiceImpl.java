@@ -4,20 +4,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elec5619.recipeweb.bean.User;
 import com.elec5619.recipeweb.mapper.UserMapper;
 import com.elec5619.recipeweb.service.IUserService;
-//import com.elec5619.recipeweb.service.ex.*;
 import com.elec5619.recipeweb.util.Avatar;
 import com.elec5619.recipeweb.util.ImageUtil;
-import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 
 /** userService Implementation */
@@ -85,7 +77,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public String press(String url) throws IOException {
         File file = new File(url);
         String fileName = file.getName();
-        String output = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\resources\\static\\ThumbImage\\" + fileName;
+        String output = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\webapp\\WEB-INF\\jsp\\ThumbImage\\" + fileName;
         ImageUtil.imgThumb(url,output,150,150);
         return output;
     }

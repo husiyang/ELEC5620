@@ -13,6 +13,7 @@
   <body>
     <!--side bar-->
     <div class="side">
+        <img src="images/logo.png"/>
         <a href="#View records" onclick="showViewRecords()">View records</a>
         <p></p>
         <a href="#Create New Room" onclick="showCreate()">Create New Room</a>
@@ -29,7 +30,7 @@
         <p>Your Chat Group</p>
         <button class="refresh" id="refresh" onclick="refreshchat()">Refresh</button>
         <ul id="chatlist">
-            <li class="chat" onclick="showChat(this)">Testing Chat!!!</li>
+            <li class="chat"  onclick="showChat(this)">Testing Chat!!!</li>
         </ul>
     </div>
 
@@ -45,8 +46,8 @@
             <h1>Group Friend List</h1>
             <ul class="groupfriendlist" id="groupfriendlist"></ul>
         </section>
-        <button type="button" onclick="send()">Send</button>
-        <button type="button" onclick="closeChat()">Close</button>
+        <button type="button" class="button" onclick="send()">Send</button>
+        <button type="button " class="button1" onclick="closeChat()">Close</button>
     </div>
 
 
@@ -63,10 +64,9 @@
             </div>
             <p></p>
             <div>
-                <input type="submit" value="Submit"/>
-            </div>
-            <div>
-                <button type="button" onclick="closeCreate()">Close</button>
+                <input type="submit" class="button" value="Submit"/>
+
+                <button type="button" class="button1" onclick="closeCreate()">Close</button>
             </div>
         </form>
     </div>
@@ -77,9 +77,10 @@
             <h1>View records</h1>
             <label class="studentid" for="contact_uid"><b>Student ID</b></label>
             <input id="contact_uid" type="text" placeholder="Input Student ID" name="contact_uid" required>
-            <button type="button" onclick="submitView()">Submit</button>
+            <button type="button" class="button" onclick="submitView()">Submit</button>
+            <button type="button" class="button1" onclick="closeView()">Close</button>
             <section class="displayarea" id="displayarea"></section>
-            <button type="button" onclick="closeView()">Close</button>
+
         </form>
     </div>
 
@@ -89,8 +90,10 @@
         <h1>Mute users</h1>
         <label class="studentid" for="studentid"><b>Student ID</b></label>
         <input id="studentid" type="text" placeholder="Input Student ID" name="contact_uid" required>
-        <button type="button" onclick="Mute()">Mute</button>
-        <button type="button" onclick="closeMute()">Close</button>
+        <div>
+           <button type="button" class="button" onclick="Mute()">Mute</button>
+           <button type="button" class="button1" onclick="closeMute()">Close</button>
+        </div>
     </form>
 </div>
 </body>

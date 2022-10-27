@@ -25,7 +25,13 @@
 			<div>
 				<label class="button" id="generate">
 					<P></P>
-					<div style="line-height: 40px; text-align: center;  margin: auto; width: 150px;height: 40px; color: #FFFFFF; background: #8d21ae;">Start Generate</div>
+					<div style="line-height: 40px; text-align: center;  margin: auto; width: 150px;height: 40px; color: #FFFFFF; background: #8d21ae;">Generate</div>
+				</label>
+			</div>
+			<div>
+				<label class="button" id="nextStep" onclick="jump()">
+					<P></P>
+					<div style="line-height: 40px; text-align: center;  margin: auto; width: 150px;height: 40px; color: #FFFFFF; background: #8d21ae;">Next Step</div>
 				</label>
 			</div>
 		</form>

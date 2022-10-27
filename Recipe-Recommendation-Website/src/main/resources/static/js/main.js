@@ -7,7 +7,6 @@ var chatroomid;
 //login page register button
 function register(){
     window.location.href = "/register";
-    // location.replace("http://localhost:8081/register");
 }
 
 //login form submittion
@@ -23,28 +22,22 @@ $(document).ready(function(){
           data: form.serialize(),
           dataType:"json",
           success:function(data){
-              console.log(data);
               if(data.state === 200){ //返回成功信息，转到主界面或登陆界面
-                  alert("Login Success");
                   var loginform = document.getElementById('loginform');
                   username = loginform.elements[0].value;
 
                 //从数据库中得到用户id, 身份，avatar（或许需要）
-                  userid = data.uid;
-                  role = data.role;
-                  avatar = data.avatar;
-
+                  userid = data.data.uid;
+                  role = data.data.role;
+                  avatar = data.data.avatar;
                   if(role === 0){
                       window.location.href = "/student";
-                    // location.replace("http://localhost:8081/student"); //redirect to student main page
                   }else if(role === 1){
                       window.location.href = "/visitor";
-                    // location.replace("http://localhost:8081/visitor"); //redirect to vistor main page
-                  }else{
+                  }else if(role === 2){
                       window.location.href = "/manager";
-                    // location.replace("http://localhost:8081/manager"); //redirect to manager main page
                   }
-
+                  alert("Login Success.");
 
               }else{
                   alert("Something went wrong, please try again.");
@@ -57,7 +50,6 @@ $(document).ready(function(){
 //register page login button
 function login(){
     window.location.href = "/login";
-    // location.replace("http://localhost:8081/login");
   }
 //register form submittion
 $(document).ready(function(){
@@ -77,16 +69,12 @@ $(document).ready(function(){
         data: form.serialize(),
         dataType:"json",
         success:function(data){
-            console.log(data);
             if(data.state === 200){ //返回成功信息，转到主界面或登陆界面
                 alert("Register Success");
-                console.log(data.studentid);
-                if(data.studentid !== ""){
+                if(data.data.studentid !== ""){
                     window.location.href = "/avatar";
-                    // location.replace("http://localhost:8081/avatar"); //redirect to avatar
-                }else{
+                }else if (data.data.studentid === ""){
                     window.location.href = "/login";
-                    // location.replace("http://localhost:8081/login"); //redirect to login
                 }
             }else{
                 alert("Something went wrong, please try again.");
@@ -572,6 +560,7 @@ function uploadAvatar(){
             type: "POST",
             url: "/users/uploadAvatar",
             data: formData,
+            async: false,
             processData : false,
             contentType : false ,
             cache: false,
@@ -580,7 +569,7 @@ function uploadAvatar(){
                 console.log(data);
                 if(data.state === 200){
                     alert("File Sent Success");
-                    window.location.href = "/student";
+                    document.getElementById('preview').src = data.data;
                 }else{
                     alert("Something went wrong, please try again.");
                 }
@@ -589,3 +578,21 @@ function uploadAvatar(){
     });
 
 }
+
+function jump(){
+    window.location.href = "/student";
+}
+
+// function showAvatar(){
+//     var url = "/images/1.jpg";
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("GET", url, true);
+//     xhr.responseType = "blob";
+//     xhr.onload = function () {
+//         if (this.status == 200) {
+//             var blob = this.response;
+//             $("#preview").attr("src", window.URL.createObjectURL(blob));
+//         }
+//     }
+//     xhr.send();
+// }

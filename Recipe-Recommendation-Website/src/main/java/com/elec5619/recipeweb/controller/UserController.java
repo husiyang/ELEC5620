@@ -1,22 +1,16 @@
 package com.elec5619.recipeweb.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.elec5619.recipeweb.bean.User;
 import com.elec5619.recipeweb.service.IUserService;
 import com.elec5619.recipeweb.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -69,6 +63,14 @@ public class UserController extends BaseController {
         return new JsonResult<User>(CODE_FAIL);
     }
 
+    /**
+     * User upload image file and convert to avatar
+     * @param file
+     * @param session
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @RequestMapping("/uploadAvatar")
     @ResponseBody
     public JsonResult<String> uploadAvatar(@RequestPart("file") MultipartFile[] file, HttpSession session) throws IOException, InterruptedException {
@@ -79,7 +81,10 @@ public class UserController extends BaseController {
         String imageUrl = userService.convert(url);
         String narrowImageUrl = userService.press(imageUrl);
         userService.saveImage(narrowImageUrl, uid);
-        return new JsonResult<String>(CODE_OK,"success", imageUrl);
+        File imageFile = new File(imageUrl);
+        String fileName = imageFile.getName();
+        String relativeUrl = "/AnnexImage/" + fileName;
+        return new JsonResult<String>(CODE_OK,"success", relativeUrl);
     }
 
 }

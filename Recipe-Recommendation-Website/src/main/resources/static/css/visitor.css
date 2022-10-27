@@ -1,5 +1,5 @@
 body{
-    background-image: url(../images/background2.png);
+    background-image: url(../images/background1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -15,6 +15,13 @@ ul {
 
 p{
     color: white;
+}
+
+img{
+
+    height: 150px;
+    width: 150px;
+
 }
 
 .side {
@@ -75,4 +82,35 @@ p{
 	width: 2.2rem;
 	height: 2.2rem;
 	margin-left: 14px;
+}
+
+.button{
+    position: absolute ;
+    top: 91%;
+    padding: 12px 20px;
+    width: 150px;
+    min-height: 20px;
+    background-color: #a10bc7;
+    border: 1px solid #3762bc;
+    color: #fff;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.button1{
+    position: absolute ;
+    top: 91%;
+    right: 10%;
+    padding: 12px 20px;
+    width: 150px;
+    min-height: 20px;
+    background-color: #a10bc7;
+    border: 1px solid #3762bc;
+    color: #fff;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
 }
