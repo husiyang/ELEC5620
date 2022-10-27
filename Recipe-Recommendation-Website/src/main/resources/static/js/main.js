@@ -119,30 +119,36 @@ function refresh(){
 
     $.ajax({
         type:"GET",
-        url: "/friendlist",
-        data: {userid: userid},
+        url: "/students/friendlist",
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回好友json
-                for(var i = 0; i < data.contact_student_id.length; i++){
-                    var contact_student_id = data.contact_student_id.get(i); //需要确认！！！
-                    var contact_avatar = data.contact_avatar.get(i);
-                    var contact_username = data.contact_username.get(i);
+            if(data.state === 200){ //返回好友json
+                for(var i = 0; i < data.data.length; i++){
+                    var contact_student_id = data.data[i][0]; //需要确认！！！
+                    var contact_avatar = data.data[i][1];
+                    var contact_username = data.data[i][2];
 
+                    console.log(contact_student_id);
+                    console.log(contact_avatar);
+                    console.log(contact_username);
                     //create list
                     var li = document.createElement("li");
 
                     var img = document.createElement("img");
-                    img.setAttribute("src", contact_avatar);
                     img.setAttribute("class", "avatar");
+                    img.setAttribute("width", "100px");
+                    img.setAttribute("height", "100px");
+                    img.src = contact_avatar;
 
-                    li.appendChild(img);
+
+
 
                     li.setAttribute("class", "friend");
                     li.innerHTML = contact_username;
+                    li.appendChild(img);
 
-                    friendlist.appendChild("li");
+                    friendlist.appendChild(li);
                 }
             }else{
                 alert("Something went wrong, please try again.");
@@ -157,15 +163,15 @@ $(document).ready(function(){
         e.preventDefault();
 
         var form = $(this);
-        var url = "/addfriend"; //url需要更换为跟后端相连的
+        var url = "/students/addfriend"; //url需要更换为跟后端相连的
         $.ajax({
             type:"POST",
             url: url,
-            data: form.serialize() + "&" +  "userid=" + userid,
+            data: form.serialize(),
             dataType:"json",
             success:function(data){
                 console.log(data);
-                if(data.msg == "success"){ //返回成功信息
+                if(data.state === 200){ //返回成功信息
                     document.getElementById("addfriend").style.display = "none";
                     alert("Add New Friend Success");
                 }else{

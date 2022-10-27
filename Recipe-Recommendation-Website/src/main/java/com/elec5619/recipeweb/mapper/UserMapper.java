@@ -9,4 +9,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     User findByUsername(String username);
 
+    User findStudentIdByUid(int uid);
+
+    User findByStudentid(String studentid);
+
 }

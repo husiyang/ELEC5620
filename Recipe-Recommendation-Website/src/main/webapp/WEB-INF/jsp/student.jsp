@@ -24,7 +24,7 @@
         <button class="refresh" id="refresh" onclick="refresh()">Refresh</button>
         <ul id="friendlist">
             <!--以下为例子，friendlist从数据库那里拿到，后面按照这样的形式来展示-->
-            <li class="friend"><img class="avatar" src="/images/logo.png" width="100px" height="100px"/>Testing</li>
+            <li class="friend"><img class="avatar" src="" width="100px" height="100px"/>Testing</li>
         </ul>
 
         <p>Your Chat Group</p>

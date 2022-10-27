@@ -1,6 +1,7 @@
 package com.elec5619.recipeweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.elec5619.recipeweb.bean.Contact;
 import com.elec5619.recipeweb.bean.User;
 import com.elec5619.recipeweb.mapper.UserMapper;
 import com.elec5619.recipeweb.service.IUserService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /** userService Implementation */
@@ -78,7 +81,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         File file = new File(url);
         String fileName = file.getName();
         String output = "D:\\code\\ELEC5620\\Recipe-Recommendation-Website\\src\\main\\webapp\\WEB-INF\\jsp\\ThumbImage\\" + fileName;
-        ImageUtil.imgThumb(url,output,150,150);
+        ImageUtil.imgThumb(url,output,100,100);
         return output;
     }
 
@@ -88,5 +91,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         user.setUid(uid);
         user.setAvatar(url);
         userMapper.updateById(user);
+    }
+
+    @Override
+    public List<User> getFriendList(List<Contact> contacts) {
+        List<User> list = new ArrayList<>();
+        for(Contact c : contacts){
+            String friendStudentId = c.getFriendid();
+            User user = userMapper.findByStudentid(friendStudentId);
+            list.add(user);
+        }
+        return list;
     }
 }
