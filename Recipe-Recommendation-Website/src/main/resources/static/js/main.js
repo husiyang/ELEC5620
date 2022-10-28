@@ -141,9 +141,6 @@ function refresh(){
                     img.setAttribute("height", "100px");
                     img.src = contact_avatar;
 
-
-
-
                     li.setAttribute("class", "friend");
                     li.innerHTML = contact_username;
                     li.appendChild(img);
@@ -189,14 +186,13 @@ function getFriend(){
 
     $.ajax({
         type:"GET",
-        url: "/friendlist",
-        data: {userid: userid},
+        url: "/students/friendlist",
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回好友json
-                for(var i = 0; i < data.contact_student_id.length; i++){
-                    var contact_student_id = data.contact_student_id.get(i); //需要确认！！！
+            if(data.state === 200){ //返回好友json
+                for(var i = 0; i < data.data.length; i++){
+                    var contact_student_id = data.data[i][0]; //需要确认！！！
 
                     //create list
                     var checkbox = document.createElement("input");
@@ -224,15 +220,16 @@ $(document).ready(function(){
         e.preventDefault();
 
         var form = $(this);
-        var url = "/newroom"; //url需要更换为跟后端相连的
+        var url = "/students/newroom"; //url需要更换为跟后端相连的
+        console.log(form.serialize());
         $.ajax({
             type:"POST",
             url: url,
-            data: form.serialize() + "&" +  "userid=" + userid,
+            data: form.serialize(),
             dataType:"json",
             success:function(data){
                 console.log(data);
-                if(data.msg == "success"){ //返回成功信息
+                if(data.state === 200){ //返回成功信息
                     document.getElementById("newroom").style.display = "none";
                     alert("Create New Room Success");
                 }else{
@@ -296,23 +293,22 @@ function refreshchat(){
 
     $.ajax({
         type:"GET",
-        url: "/chatlist",
-        data: {userid: userid},
+        url: "/students/chatlist",
         dataType:"json",
         success:function(data){
             console.log(data);
-            if(data.msg == "success"){ //返回好友json
-                for(var i = 0; i < data.chatroom_id.length; i++){
-                    var chatroom_id = data.chatroom_id.get(i);//需要确认！！！
-
+            if(data.state === 200){ //返回好友json
+                for(var i = 0; i < data.data.length; i++){
+                    var chatroom_id = data.data[i];//需要确认！！！
+                    console.log(chatroom_id);
                     //create list
                     var li = document.createElement("li");
 
                     li.setAttribute("class", "chat");
                     li.setAttribute("onclick", "showChat(this)");
-                    li.innerHTML = chatroom_id;
+                    li.innerHTML = "chatroom " + chatroom_id;
 
-                    chatlist.appendChild("li");
+                    chatlist.appendChild(li);
                 }
             }else{
                 alert("Something went wrong, please try again.");

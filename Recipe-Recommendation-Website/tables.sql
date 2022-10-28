@@ -20,3 +20,21 @@ CREATE TABLE user_contact (
                         `friendid` CHAR(32),
                         PRIMARY KEY (id)
 ) CHARSET = UTF8;
+
+DROP TABLE IF EXISTS t_chatroom;
+
+CREATE TABLE t_chatroom (
+                              `id` INT AUTO_INCREMENT,
+                              `size` INT NOT NULL,
+                              `ownerid` INT NOT NULL,
+                              PRIMARY KEY (id)
+) CHARSET = UTF8;
+
+DROP TABLE IF EXISTS user_chatroom;
+
+CREATE TABLE user_chatroom (
+                            `id` INT AUTO_INCREMENT,
+                            `memberid` INT NOT NULL,
+                            `chatroomid` INT NOT NULL,
+                            PRIMARY KEY (id)
+) CHARSET = UTF8;

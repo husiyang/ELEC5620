@@ -1,7 +1,9 @@
 package com.elec5619.recipeweb.controller;
 
+import com.elec5619.recipeweb.bean.Chatroom;
 import com.elec5619.recipeweb.bean.Contact;
 import com.elec5619.recipeweb.bean.User;
+import com.elec5619.recipeweb.bean.UserChatroom;
 import com.elec5619.recipeweb.service.IStudentService;
 import com.elec5619.recipeweb.service.IUserService;
 import com.elec5619.recipeweb.util.JsonResult;
@@ -56,6 +58,33 @@ public class StudentController extends BaseController{
             userData.add(username);
             data.add(userData);
         }
-        return new JsonResult<List<List<String>>>(CODE_OK,"message", data);
+        return new JsonResult<List<List<String>>>(CODE_OK,"success", data);
+    }
+
+    @RequestMapping("/newroom")
+    @ResponseBody
+    public JsonResult<Chatroom> newRoom(String contact_student_id, HttpSession session){
+        int userid = getUidFromSession(session);
+        String[] list = contact_student_id.split(",");
+        Chatroom newChatroom = studentService.createChatroom(list,userid);
+        if(newChatroom != null){
+            return new JsonResult<Chatroom>(CODE_OK,"success",newChatroom);
+        }
+        return new JsonResult<>(CODE_FAIL);
+
+    }
+
+    @RequestMapping("/chatlist")
+    @ResponseBody
+    public JsonResult<List<String>> loadChatroomList(HttpSession session){
+        int userid = getUidFromSession(session);
+        List<UserChatroom> chatroomList = studentService.getChatroomList(userid);
+        List<String> data = new ArrayList<>();
+        for(UserChatroom chatroom : chatroomList){
+            String chatroomid = String.valueOf(chatroom.getChatroomid());
+            data.add(chatroomid);
+        }
+        System.out.println(data);
+        return new JsonResult<List<String>>(CODE_OK,"success",data);
     }
 }

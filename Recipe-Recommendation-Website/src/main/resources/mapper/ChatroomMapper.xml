@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elec5619.recipeweb.mapper.ChatroomMapper">
+
+    <resultMap id = "ChatroomMap" type="com.elec5619.recipeweb.bean.Chatroom">
+        <id column="id" property="id"></id>
+        <result column="size" property="size"></result>
+        <result column="ownerid" property="ownerid"></result>
+    </resultMap>
+
+    <select id="findByOwnerid" resultMap="ChatroomMap" parameterType="java.lang.Integer">
+        select *
+        from t_chatroom
+        where ownerid = #{ownerid}
+    </select>
+
+</mapper>
